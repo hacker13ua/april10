@@ -3,6 +3,7 @@ package org.esurpvskiy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * TODO: write javadoc
@@ -16,6 +17,16 @@ public class SumMain {
         for (int i = 0; i < 1000; i++) {
             array.add(rnd.nextInt(100));
         }
+
+        final List<String> collect = array.stream()
+                .filter(it -> it % 2 == 0)
+                .filter(it -> it > 50)
+                .map(it -> "()" + it.toString())
+                .filter(it -> it.length() > 3)
+                .collect(Collectors.toList());
+        System.out.println(collect);
+
+
         final MySumThread thread1 = new MySumThread();
         thread1.setStartIndex(0);
         thread1.setStopIndex(500);
@@ -30,25 +41,6 @@ public class SumMain {
         thread2.join();
         System.out.println(thread1.getSumResult() + thread2.getSumResult());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

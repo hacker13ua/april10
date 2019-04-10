@@ -1,6 +1,7 @@
 package org.esurpvskiy;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * TODO: write javadoc
@@ -31,9 +32,15 @@ public class MySumThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = startIndex; i < stopIndex; i++) {
+
+        sumResult = array.subList(startIndex, stopIndex)
+                .stream()
+                .mapToInt(value -> value)
+                .sum();
+
+        /*for (int i = startIndex; i < stopIndex; i++) {
             sumResult += array.get(i);
-        }
+        }*/
     }
 }
 
