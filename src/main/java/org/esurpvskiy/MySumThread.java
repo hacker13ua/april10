@@ -32,15 +32,12 @@ public class MySumThread extends Thread {
 
     @Override
     public void run() {
-
-        sumResult = array.subList(startIndex, stopIndex)
-                .stream()
-                .mapToInt(value -> value)
-                .sum();
-
-        /*for (int i = startIndex; i < stopIndex; i++) {
+        for (int i = startIndex; i < stopIndex; i+=4) {
             sumResult += array.get(i);
-        }*/
+            sumResult += array.get(i+1);
+            sumResult += array.get(i+2);
+            sumResult += array.get(i+3);
+        }
     }
 }
 
